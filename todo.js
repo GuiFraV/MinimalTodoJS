@@ -16,3 +16,5 @@ const createTaskItem = (task) => {
         </li>
     `
 }
+
+const storedTasks = JSON.parse(localStorage.getItem('task')) || []
