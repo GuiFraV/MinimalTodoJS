@@ -1,6 +1,6 @@
 const taskInput = document.querySelector('#taskInput');
 const taskList = document.querySelector("#taskList");
-const addTaskeForm = document.querySelector('#addTaskForm');
+const addTaskForm = document.querySelector('#addTaskForm');
 
 taskList.style= `
     list-style:none;
@@ -31,4 +31,16 @@ const renderTasks = () => {
 
 window.onload = renderTasks;
 
-console.log(renderTasks())
+const addTask = (event) => {
+    event.preventDefault()
+
+    const task = taskInput.value
+    const taskItem = createTaskItem(task)
+    taskList.insertAdjacentElement('beforeend', taskItem)
+
+    storedTasks.push(task)
+    localStorage.setItem('tasks',JSON.stringify(storedTasks))
+    addTaskForm.reset();
+}
+
+addTaskForm.addEventListener('submit', addTask);
