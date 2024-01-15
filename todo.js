@@ -18,3 +18,17 @@ const createTaskItem = (task) => {
 }
 
 const storedTasks = JSON.parse(localStorage.getItem('task')) || []
+
+const renderTasks = () => {
+    storedTasks.forEach(task => {
+        taskList.insertAdjacentHTML(
+            'beforeend',
+            createTaskItem(task)
+        )
+    });
+}
+
+
+window.onload = renderTasks;
+
+console.log(renderTasks())
