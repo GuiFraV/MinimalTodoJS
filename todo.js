@@ -15,7 +15,7 @@ const createTaskItem = (task) => {
                 onChange="toggleTaskCompletion(event)"
             />
             <label for"task">${task}</label>
-            <button type="button">X</button>
+            <button type="button" onClick=removeTask(event)>X</button>
         </li>
     `;
 }
@@ -56,4 +56,14 @@ const toggleTaskCompletion = (event) => {
     }else{
         task.style.textDecoration = 'none'
     }
+}
+
+const removeTask = (event) => {
+    const taskItem = event.target.parentElement
+    const task = taskItem.querySelector('label').innerText
+    const indexOfTask = storedTasks.indexOf(task)
+
+    storedTasks.splice(indexOfTask, 1)
+    localStorage.setItem('tasks', JSON.stringify(storedTasks))
+    taskItem.remove()
 }
