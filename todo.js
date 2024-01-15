@@ -7,14 +7,17 @@ taskList.style= `
     margin-top: 1rem;
     font-size: 1.5rem;
 `
+
 const createTaskItem = (task) => {
-    `
+    return `
         <li>
-            <input type="checkbox" name="task" value="${task}" />
+            <input type="checkbox" name="task" value="${task}" 
+                onChange="toggleTaskCompletion(event)"
+            />
             <label for"task">${task}</label>
             <button type="button">X</button>
         </li>
-    `
+    `;
 }
 
 const storedTasks = JSON.parse(localStorage.getItem('task')) || []
@@ -28,7 +31,6 @@ const renderTasks = () => {
     });
 }
 
-
 window.onload = renderTasks;
 
 const addTask = (event) => {
@@ -36,7 +38,7 @@ const addTask = (event) => {
 
     const task = taskInput.value
     const taskItem = createTaskItem(task)
-    taskList.insertAdjacentElement('beforeend', taskItem)
+    taskList.insertAdjacentHTML('beforeend', taskItem)
 
     storedTasks.push(task)
     localStorage.setItem('tasks',JSON.stringify(storedTasks))
@@ -44,3 +46,14 @@ const addTask = (event) => {
 }
 
 addTaskForm.addEventListener('submit', addTask);
+
+const toggleTaskCompletion = (event) => {
+    const taskItem = event.target.parentElement
+    const task = taskItem.querySelector('label')
+
+    if(event.target.checked){
+        task.style.textDecoration = 'line-through'
+    }else{
+        task.style.textDecoration = 'none'
+    }
+}
