@@ -51,4 +51,36 @@ const maxChange = (arr) => {
 
 }
 
-console.log(maxChange(coin))
+// console.log(maxChange(coin))
+
+const my_list = [1, 3, 5, 7, 9];
+
+const binarySearch = (arr, target) => {
+
+    let low = arr[0];
+    let high = arr.length -1;
+        
+    while(low < high){
+        
+        let middle = Math.floor((low + high)/2);
+        let guess = arr[middle];
+
+        if(target === guess){
+            return arr[middle];
+        }
+
+        if(target < guess){
+            high = middle -1;
+        }else{
+            low = middle + 1;
+        }
+
+    }
+
+    return false;
+
+
+
+}
+
+console.log(binarySearch(my_list, 7))
