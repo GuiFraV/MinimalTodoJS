@@ -175,3 +175,17 @@ const sumArray = nums.reduce((acc, curr) => {
     return acc + curr;
 }, 0);
 console.log(sumArray)
+
+const palindrome = (str) => {
+    let isTrue = true;
+
+    for(let i = 0 ; i < str.length; i++){
+        if(str[i] !== str[str.length -1 -i]){
+            isTrue = false;
+        }
+    }
+
+    return isTrue;
+}
+
+console.log(palindrome('kayak'))
