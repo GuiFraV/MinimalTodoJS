@@ -158,3 +158,15 @@ const isPrime = (nbr) => {
 
 
 }
+
+
+const nums = [ 87, 64, 96, 92, 88, 99, 73]
+const Max = nums.reduce((acc, curr) => {
+    if(acc < curr){
+        return curr;
+    }else{
+        return acc
+    }
+}, 0);
+
+console.log(Max)
