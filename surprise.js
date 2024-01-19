@@ -27,4 +27,28 @@ const sortedArray = (arr) => {
     return arr.sort((a,b) => a - b);
 }
 
-console.log(sortedArray(num))
+// console.log(sortedArray(num))
+
+const coin = [1, 2, 5];
+
+const maxChange = (arr) => {
+
+    let sortCoin = arr.sort((a,b) => a - b);
+    let changeMin = 1;
+
+    console.log(sortCoin)
+
+    for(let i = 0; i < sortCoin.length; i++){
+
+        if(sortCoin[i] <= changeMin){
+            changeMin += sortCoin[i];
+        }
+
+    }
+
+    return changeMin;
+
+
+}
+
+console.log(maxChange(coin))
