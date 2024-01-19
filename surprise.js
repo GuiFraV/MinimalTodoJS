@@ -170,3 +170,8 @@ const Max = nums.reduce((acc, curr) => {
 }, 0);
 
 console.log(Max)
+
+const sumArray = nums.reduce((acc, curr) => {
+    return acc + curr;
+}, 0);
+console.log(sumArray)
