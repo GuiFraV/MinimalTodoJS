@@ -83,4 +83,49 @@ const binarySearch = (arr, target) => {
 
 }
 
-console.log(binarySearch(my_list, 7))
+// console.log(binarySearch(my_list, 7))
+
+
+const competitions = [
+    ["HTML", "C#"],
+    ["C#", "Python"],
+    ["Python", "HTML"]
+]
+
+const results = [0, 0 ,1]
+
+const resComp = (team, match) => {
+
+    let obj = {};
+
+    for(let i = 0; i < team.length; i++){
+
+        let homeTeam = team[i][0];
+        let awayTeam = team[i][1];
+
+        if(match[i] === 0){
+
+            if(obj[awayTeam]){
+                obj[awayTeam]+= 3
+            }else{
+                obj[awayTeam] = 3
+            }
+        }else{
+            
+            if(obj[homeTeam]){
+                obj[homeTeam]+= 3
+            }else{
+                obj[homeTeam] = 3
+            }
+        }
+        
+    }
+
+    let sortedRes = Object.entries(obj).sort((a,b) => b[1] - a[1] )
+    return sortedRes[0][0];
+
+
+
+}
+
+console.log(resComp(competitions,results))
