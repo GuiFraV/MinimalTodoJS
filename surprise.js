@@ -189,3 +189,18 @@ const palindrome = (str) => {
 }
 
 console.log(palindrome('kayak'))
+
+const v = ['y','y','n','n','y','y','n','n','y','y','n','n','y','y','n','n','y','y','n','n','y','y','n','n','y','y','n','n','y','y','n','n','y','y','n','n','y','y','n','n','y','y','n','n','y','y','n','n','y','y','n','n','y','n','n','y','n','n','y','n','n','y','n','n','y','n','n','y','y','y']
+const countVote = v.reduce((acc, curr) => {
+
+    if(acc[curr]){
+        acc[curr]++
+    }else{
+        acc[curr] = 1
+    }
+
+    return acc
+
+}, {})
+
+console.log(countVote)
